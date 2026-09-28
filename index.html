@@ -7,6 +7,7 @@
   <meta name="description" content="Ecology of Attention — an adaptive participatory art research project by Lena Sloss, exploring attention through live piano, sensory systems and responsive visual environments." />
   <title>Ecology of Attention — #ecoatt</title>
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block" />
   <style>
     :root {
       --bg: #ffffff;
@@ -155,9 +156,11 @@
       transition: opacity .2s ease;
     }
     nav a:hover { opacity: .55; }
+    nav a.nav-cta { min-height: 38px; padding: 0 18px; color: white; }
+    nav a.nav-cta:hover { opacity: 1; }
 
     .hero {
-      min-height: calc(100svh - 72px);
+      min-height: min(calc(100svh - 72px), 60rem);
       display: grid;
       place-items: center;
       padding: clamp(72px, 10vw, 150px) 0;
@@ -165,7 +168,6 @@
     }
 
     .hero-grid {
-      width: 100%;
       display: grid;
       grid-template-columns: 1.618fr 1fr;
       gap: clamp(42px, 6vw, 100px);
@@ -208,6 +210,20 @@
       text-shadow: 0 0 38px rgba(233,185,95,.10);
     }
 
+    @property --glow-r { syntax: '<length>'; inherits: true; initial-value: 0px; }
+    .hero h1 {
+      --mx: 50%; --my: 50%;
+      transition: --glow-r .45s ease;
+    }
+    .hero h1.is-tracking {
+      --glow-r: 260px;
+      background: radial-gradient(circle var(--glow-r) at var(--mx) var(--my), #ebbd68 0%, #8b6326 45%, #111 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero h1.is-tracking .glow-word { background: none; text-shadow: none; }
+
     .hero-copy {
       margin-top: 32px;
       max-width: 670px;
@@ -236,12 +252,15 @@
       box-shadow: 0 10px 35px rgba(18,18,18,.04);
       font-size: 14px;
       letter-spacing: .045em;
-      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease, background-color .2s ease, color .2s ease;
     }
-    .button:hover {
+    .button:hover,
+    .button.primary:hover {
       transform: translateY(-2px);
-      border-color: rgba(233,185,95,.65);
-      box-shadow: 0 14px 40px rgba(199,145,43,.12);
+      background: #eba92a;
+      color: #1a1204;
+      border-color: #eba92a;
+      box-shadow: 0 14px 40px rgba(235,169,42,.38);
     }
     .button.primary {
       background: #111;
@@ -264,6 +283,7 @@
       position: absolute;
       inset: 9%;
       border-radius: 50%;
+      transform: translate(calc(var(--px-x, 0) * 0.04px), calc(var(--px-y, 0) * 0.04px));
       background:
         radial-gradient(circle at 50% 50%, #fff 0 6%, rgba(255,248,228,.96) 7% 15%, rgba(255,220,142,.46) 16% 18%, rgba(255,255,255,.06) 19% 100%);
       box-shadow:
@@ -271,6 +291,7 @@
         inset 0 0 74px rgba(255,225,165,.2);
     }
 
+    .orbital .px { will-change: transform; }
     .orbital svg {
       position: absolute;
       inset: 0;
@@ -308,6 +329,49 @@
       gap: clamp(28px, 5vw, 76px);
       align-items: start;
       margin-bottom: clamp(44px, 7vw, 90px);
+    }
+
+    #project {
+      overflow-x: clip;
+      --line: rgba(255,255,255,.12);
+      color: #f3f1ea;
+      background:
+        radial-gradient(circle at 85% 12%, rgba(120,170,200,.14), transparent 32%),
+        radial-gradient(circle at 12% 88%, rgba(233,185,95,.12), transparent 36%),
+        #121212;
+    }
+    #project h2, #project .lead { color: #f3f1ea; }
+    #project .kicker { color: #b9b7ae; }
+    #project { padding: 0; }
+    #project .project-head {
+      --head-gap: clamp(28px, 5vw, 76px);
+      margin-bottom: 0;
+      gap: 0;
+    }
+    #project .project-head > div {
+      padding: var(--head-gap) 0 var(--head-gap) var(--head-gap);
+      align-self: center;
+    }
+    .project-head {
+      --bleed: calc((100vw - min(var(--max), 100vw - 2 * var(--pad))) / 2);
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+    }
+    .project-head .project-media {
+      margin: 0 0 0 calc(-1 * var(--bleed));
+      min-height: 360px;
+      max-height: 60rem;
+      border: none;
+      border-radius: 0;
+      box-shadow: none;
+      background: none;
+    }
+    .project-head .project-media::after { content: none; }
+    .project-head .project-media img { filter: none; }
+    .project-head .project-media img {
+      height: 100%;
+      aspect-ratio: auto;
+      object-fit: cover;
     }
 
     .kicker {
@@ -356,14 +420,51 @@
     .card::after {
       content: "";
       position: absolute;
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      right: -80px;
-      bottom: -90px;
-      background: radial-gradient(circle, rgba(239,188,91,.20), transparent 66%);
+      inset: 0;
+      background: radial-gradient(circle 240px at var(--cx, 100%) var(--cy, 100%), rgba(255,247,224,.9), rgba(255,236,190,.35) 45%, transparent 75%);
+      pointer-events: none;
+      z-index: 0;
+    }
+    .card > * { position: relative; z-index: 1; }
+    .glass-card {
+      --blur: 18px;
+      --dim: .68;
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      background: #1a1206;
+      border-color: rgba(235,169,42,.35);
+      box-shadow: 0 24px 70px rgba(120,70,5,.25);
+    }
+    .glass-card::before {
+      content: "";
+      position: absolute;
+      inset: calc(var(--blur) * -2);
+      width: auto; height: auto;
+      border: 0; border-radius: 0;
+      z-index: 0;
+      background-image: linear-gradient(rgba(18,11,2,var(--dim)), rgba(18,11,2,var(--dim))), url("assets/ecology-attention-project.webp");
+      background-repeat: no-repeat;
+      background-size: 100% 100%, var(--iw, 100%) var(--ih, auto);
+      background-position: 0 0, calc(var(--ix, 0px) + var(--blur) * 2) calc(var(--iy, 0px) + var(--blur) * 2);
+      filter: blur(var(--blur));
+      box-shadow: none;
       pointer-events: none;
     }
+    .glass-card::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+      mix-blend-mode: overlay;
+      background: radial-gradient(circle 280px at var(--cx, 100%) var(--cy, 100%), rgba(255,236,180,1), rgba(255,190,80,.55) 40%, transparent 75%);
+      pointer-events: none;
+    }
+    .glass-card > * { position: relative; z-index: 1; text-shadow: 0 1px 12px rgba(18,11,2,.45); }
+    .glass-card.glass-card .card-index { color: #f3c969; }
+    .glass-card.glass-card h3, .glass-card.glass-card .partner-name { color: #fff8ea; }
+    .glass-card.glass-card p { color: #f4ead6; }
+    .glass-card.glass-card .partner-meta { color: #eadfc8; }
 
     .card-index {
       font-size: 11px;
@@ -413,7 +514,16 @@
       letter-spacing: .01em;
       margin-bottom: 8px;
     }
-    .step span { color: #696963; line-height: 1.72; font-size: 15px; letter-spacing: .018em; }
+    .step .step-icon {
+      display: block;
+      margin-bottom: 18px;
+      font-size: 84px;
+      line-height: 1;
+      color: #c7912b;
+      letter-spacing: normal;
+      font-variation-settings: 'FILL' 0, 'wght' 200, 'GRAD' 0, 'opsz' 48;
+    }
+    .step span:not(.step-icon) { color: #696963; line-height: 1.72; font-size: 15px; letter-spacing: .018em; }
 
     .image-slide {
       margin-top: clamp(54px, 8vw, 100px);
@@ -470,6 +580,15 @@
       background: var(--gold);
       box-shadow: 0 0 24px rgba(233,185,95,.8);
     }
+    .person .avatar {
+      display: block;
+      width: 64px; height: 64px;
+      margin-bottom: 20px;
+      border-radius: 50%;
+      object-fit: cover;
+      filter: sepia(.85) saturate(.9) contrast(1.02);
+      box-shadow: 0 0 0 1px rgba(18,18,18,.08);
+    }
     .person h3 {
       margin: 0 0 10px;
       font-size: 29px;
@@ -483,6 +602,14 @@
       color: #9a7f4e;
       margin-bottom: 28px;
     }
+    .person-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      margin-top: 18px;
+      color: #5a5a55; font-size: 13px; text-decoration: none;
+      border-bottom: 1px solid rgba(18,18,18,.18);
+      transition: color .2s ease, border-color .2s ease;
+    }
+    .person-link:hover { color: #121212; border-color: rgba(199,145,43,.8); }
     .person p {
       color: #5a5a55;
       line-height: 1.82;
@@ -506,20 +633,8 @@
       justify-content: space-between;
       gap: 24px;
       padding: 28px;
-      background: rgba(255,255,255,.7);
       position: relative;
       overflow: hidden;
-    }
-    .partner::before {
-      content: "";
-      position: absolute;
-      width: 240px;
-      height: 240px;
-      border-radius: 50%;
-      right: -140px;
-      top: -130px;
-      border: 1px solid rgba(233,185,95,.30);
-      box-shadow: 0 0 70px rgba(233,185,95,.10);
     }
     .partner-name {
       font-size: clamp(29px, 3.2vw, 44px);
@@ -539,17 +654,19 @@
     .contact-panel {
       border-radius: clamp(30px, 5vw, 64px);
       padding: clamp(44px, 7vw, 92px);
-      border: 1px solid rgba(18,18,18,.08);
+      border: 1px solid rgba(255,255,255,.06);
       background:
-        radial-gradient(circle at 80% 20%, rgba(215,242,255,.55), transparent 27%),
-        radial-gradient(circle at 18% 80%, rgba(255,228,169,.40), transparent 32%),
-        rgba(255,255,255,.80);
+        radial-gradient(circle at var(--g1x, 80%) var(--g1y, 20%), rgba(120,170,200,.22), transparent 30%),
+        radial-gradient(circle at var(--g2x, 18%) var(--g2y, 80%), rgba(233,185,95,.18), transparent 34%),
+        #121212;
+      color: #f3f1ea;
       overflow: hidden;
       position: relative;
       box-shadow: 0 28px 100px rgba(67,50,14,.08);
     }
 
-    .contact-panel h2 { max-width: 900px; }
+    .contact-panel h2 { max-width: 900px; color: #f3f1ea; }
+    .contact-panel .kicker { color: #b9b7ae; }
     .mail-list {
       margin-top: 38px;
       display: flex;
@@ -561,12 +678,13 @@
       font-size: clamp(25px, 3.2vw, 46px);
       line-height: 1.28;
       letter-spacing: -.012em;
-      border-bottom: 1px solid rgba(18,18,18,.17);
+      color: #f3f1ea;
+      border-bottom: 1px solid rgba(255,255,255,.22);
       transition: color .2s ease, border-color .2s ease;
       overflow-wrap: anywhere;
     }
     .mail-list a:hover {
-      color: #8a652b;
+      color: #e9b95f;
       border-color: rgba(233,185,95,.8);
     }
 
@@ -610,6 +728,10 @@
         margin-top: 16px;
       }
       .concept-grid { grid-template-columns: 1fr; }
+      .project-head { grid-template-columns: 1fr; }
+      #project .project-head > div { padding: var(--head-gap) 0; }
+      .project-head .project-media { min-height: 0; margin-right: calc(-1 * var(--bleed)); }
+      .project-head .project-media img { aspect-ratio: 16/10; height: auto; }
       .sequence { grid-template-columns: repeat(2,1fr); }
       .step:nth-child(2) { border-right: none; }
       .step:nth-child(3), .step:nth-child(4) { border-top: 1px solid var(--line); }
@@ -627,12 +749,13 @@
       h1 { font-size: clamp(52px, 16vw, 82px); line-height: .98; letter-spacing: -.02em; }
       .hero { padding-top: 62px; }
       .hero-copy { font-size: 19px; line-height: 1.72; letter-spacing: .014em; }
-      .orbital { width: 92vw; margin-left: -5vw; }
+      .orbital { width: 100%; margin-left: 0; }
       .section { padding: 82px 0; }
       .sequence { grid-template-columns: 1fr; }
       .step, .step + .step { padding: 24px 0; border-right: none; border-top: 1px solid var(--line); }
       .step:first-child { border-top: none; }
       .image-slide img { aspect-ratio: 4/5; object-position: 50% 50%; }
+      .project-head .project-media img { aspect-ratio: 4/3; }
       .contact-panel { padding: 34px 24px; }
       .footer-row { flex-direction: column; }
     }
@@ -653,7 +776,7 @@
           <a href="#project">Project</a>
           <a href="#team">Team</a>
           <a href="#partners">Partners</a>
-          <a href="#contact">Contact</a>
+          <a class="button primary nav-cta" href="#contact">Contact</a>
         </nav>
       </div>
     </header>
@@ -686,48 +809,65 @@
                   <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
                 </filter>
               </defs>
-              <circle cx="250" cy="250" r="190" fill="none" stroke="url(#g)" stroke-width="1.2"/>
+              <g class="px" data-depth="0.08">
+                <line x1="59" y1="250" x2="441" y2="250" stroke="#1b1b1b" stroke-opacity=".08"/>
+                <line x1="250" y1="59" x2="250" y2="441" stroke="#1b1b1b" stroke-opacity=".08"/>
+                <path d="M250 250 C250 185 303 132 368 132 C433 132 486 185 486 250" fill="none" stroke="#1b1b1b" stroke-opacity=".09"/>
+              </g>
+              <g class="px" data-depth="0.18">
+                <circle cx="250" cy="250" r="190" fill="none" stroke="url(#g)" stroke-width="1.2"/>
+              </g>
+              <g class="px" data-depth="0.3">
               <circle cx="250" cy="250" r="118" fill="none" stroke="#1b1b1b" stroke-opacity=".13" stroke-width="1"/>
               <rect x="132" y="132" width="236" height="236" fill="none" stroke="#1b1b1b" stroke-opacity=".12" transform="rotate(45 250 250)"/>
+              </g>
+              <g class="px" data-depth="0.45">
+                <path d="M90 250 C90 161 161 90 250 90 C339 90 410 161 410 250 C410 339 339 410 250 410" fill="none" stroke="#efc36f" stroke-opacity=".50" filter="url(#blurGlow)"/>
+              </g>
+              <g class="px" data-depth="0.65">
               <path d="M250 60 L368 250 L250 440 L132 250 Z" fill="none" stroke="#efc36f" stroke-opacity=".44"/>
-              <path d="M90 250 C90 161 161 90 250 90 C339 90 410 161 410 250 C410 339 339 410 250 410" fill="none" stroke="#efc36f" stroke-opacity=".50" filter="url(#blurGlow)"/>
-              <path d="M250 250 C250 185 303 132 368 132 C433 132 486 185 486 250" fill="none" stroke="#1b1b1b" stroke-opacity=".09"/>
-              <line x1="59" y1="250" x2="441" y2="250" stroke="#1b1b1b" stroke-opacity=".08"/>
-              <line x1="250" y1="59" x2="250" y2="441" stroke="#1b1b1b" stroke-opacity=".08"/>
               <circle cx="250" cy="60" r="4" fill="#efc36f" filter="url(#blurGlow)"/>
               <circle cx="368" cy="250" r="4" fill="#efc36f" filter="url(#blurGlow)"/>
               <circle cx="250" cy="440" r="4" fill="#efc36f" filter="url(#blurGlow)"/>
               <circle cx="132" cy="250" r="4" fill="#efc36f" filter="url(#blurGlow)"/>
+              </g>
             </svg>
-            <div class="core">attention<br/>presence<br/>agency</div>
+            <div class="core px" data-depth="1">attention<br/>presence<br/>agency</div>
           </div>
         </div>
       </section>
 
       <section class="section" id="project">
         <div class="wrap">
-          <div class="section-head">
-            <div class="kicker reveal">01 · Project</div>
+          <div class="section-head project-head">
+            <figure class="image-slide project-media reveal">
+              <img src="assets/ecology-attention-project.webp" alt="Ecology of Attention project visualisation: luminous geodesic installation with piano, responsive screen and human figure." />
+            </figure>
             <div>
+              <div class="kicker reveal" style="margin-bottom:22px">01 · Project</div>
               <h2 class="reveal">A personalised cycle between body, sound, data and image.</h2>
               <p class="lead reveal">
                 Ecology of Attention explores how minimal changes in rhythm, focus and sensory input can alter a participant’s perception of a live artistic situation. The project combines live piano performance with compact biosensing, real-time software and responsive visualisation. Rather than measuring attention as a score, the system treats attention as a changing relation: between a person, a sound, a space and the surrounding audience.
               </p>
             </div>
           </div>
+        </div>
+      </section>
 
+      <section class="section" id="concept">
+        <div class="wrap">
           <div class="concept-grid">
-            <article class="card reveal">
+            <article class="card glass-card reveal">
               <div class="card-index">Core idea</div>
               <h3>Attention becomes visible.</h3>
               <p>Signals from the participant are translated into an evolving artistic environment. The data does not become a diagnosis; it becomes material for composition, image and encounter.</p>
             </article>
-            <article class="card reveal">
+            <article class="card glass-card reveal">
               <div class="card-index">Live layer</div>
               <h3>Piano as a responsive system.</h3>
               <p>The musical layer reacts to the participant in real time, making listening and embodied presence part of the work itself.</p>
             </article>
-            <article class="card reveal">
+            <article class="card glass-card reveal">
               <div class="card-index">Output</div>
               <h3>A trace of one encounter.</h3>
               <p>Each session can result in a unique visual artefact, short video and data-based archive that extends the live moment into an exhibition layer.</p>
@@ -737,16 +877,11 @@
           <div style="height:clamp(52px,7vw,90px)"></div>
 
           <div class="sequence reveal" aria-label="Session sequence">
-            <div class="step"><small>01</small><strong>Arrival</strong><span>Orientation, stillness, baseline and sensory focus.</span></div>
-            <div class="step"><small>02</small><strong>Live encounter</strong><span>Piano, biosignals and attention shifts unfold together.</span></div>
-            <div class="step"><small>03</small><strong>Translation</strong><span>Software converts the session into responsive visual form.</span></div>
-            <div class="step"><small>04</small><strong>Trace</strong><span>A unique artwork, video or archive element remains.</span></div>
+            <div class="step"><span class="material-symbols-outlined step-icon" aria-hidden="true">self_improvement</span><strong>Arrival</strong><span>Orientation, stillness, baseline and sensory focus.</span></div>
+            <div class="step"><span class="material-symbols-outlined step-icon" aria-hidden="true">piano</span><strong>Live encounter</strong><span>Piano, biosignals and attention shifts unfold together.</span></div>
+            <div class="step"><span class="material-symbols-outlined step-icon" aria-hidden="true">auto_awesome</span><strong>Translation</strong><span>Software converts the session into responsive visual form.</span></div>
+            <div class="step"><span class="material-symbols-outlined step-icon" aria-hidden="true">gesture</span><strong>Trace</strong><span>A unique artwork, video or archive element remains.</span></div>
           </div>
-
-          <figure class="image-slide reveal">
-            <img src="assets/ecology-attention-project.jpg" alt="Ecology of Attention project visualisation: luminous geodesic installation with piano, responsive screen and human figure." />
-            <figcaption class="image-caption">Project visual · Ecology of Attention</figcaption>
-          </figure>
         </div>
       </section>
 
@@ -762,19 +897,24 @@
 
           <div class="team-grid">
             <article class="person reveal">
+              <img class="avatar" src="assets/team-lena-sloss.webp" alt="Portrait of Lena Sloss" width="64" height="64" loading="lazy" style="object-position:45% 35%" />
               <h3>Lena Sloss</h3>
               <div class="role">Artist · Composer · Pianist · Project Lead</div>
               <p>Initiator and artistic lead. Develops the live performance language, participatory format and the project’s research into attention, embodiment and agency.</p>
+              <a class="person-link" href="https://lenasloss.com/" target="_blank" rel="noopener">lenasloss.com<svg viewBox="0 0 256 256" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M224 104a8 8 0 0 1-16 0V59.32l-66.33 66.34a8 8 0 0 1-11.32-11.32L196.68 48H152a8 8 0 0 1 0-16h64a8 8 0 0 1 8 8Zm-40 24a8 8 0 0 0-8 8v72H48V80h72a8 8 0 0 0 0-16H48a16 16 0 0 0-16 16v128a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-72a8 8 0 0 0-8-8Z"/></svg></a>
             </article>
             <article class="person reveal">
+              <img class="avatar" src="assets/team-maiia-lille.webp" alt="Portrait of Maiia Lille" width="64" height="64" loading="lazy" style="object-position:50% 40%" />
               <h3>Maiia Lille</h3>
               <div class="role">Curator · Producer</div>
               <p>Shapes the curatorial framework, production logic and public-facing structure of the project, connecting artistic research with exhibition and partnership contexts.</p>
             </article>
             <article class="person reveal">
+              <img class="avatar" src="assets/team-bert-hermans.webp" alt="Portrait of Bert Hermans" width="64" height="64" loading="lazy" style="object-position:50% 40%" />
               <h3>Bert Hermans</h3>
               <div class="role">Creative Technologist · Coder</div>
               <p>Develops the interactive technical layer, real-time software logic and data-to-visual translation that connects sensor input to the adaptive environment.</p>
+              <a class="person-link" href="https://gizmostudios.net" target="_blank" rel="noopener">gizmostudios.net<svg viewBox="0 0 256 256" width="13" height="13" aria-hidden="true"><path fill="currentColor" d="M224 104a8 8 0 0 1-16 0V59.32l-66.33 66.34a8 8 0 0 1-11.32-11.32L196.68 48H152a8 8 0 0 1 0-16h64a8 8 0 0 1 8 8Zm-40 24a8 8 0 0 0-8 8v72H48V80h72a8 8 0 0 0 0-16H48a16 16 0 0 0-16 16v128a16 16 0 0 0 16 16h128a16 16 0 0 0 16-16v-72a8 8 0 0 0-8-8Z"/></svg></a>
             </article>
           </div>
         </div>
@@ -791,11 +931,11 @@
           </div>
 
           <div class="partners">
-            <div class="partner reveal">
+            <div class="partner glass-card reveal">
               <div class="partner-name">NDSM FUSE</div>
               <div class="partner-meta">Research / presentation context<br/>Amsterdam-Noord</div>
             </div>
-            <div class="partner reveal">
+            <div class="partner glass-card reveal">
               <div class="partner-name">Het Wilde Westen</div>
               <div class="partner-meta">Pilot context<br/>Utrecht</div>
             </div>
@@ -826,6 +966,94 @@
   </div>
 
   <script>
+    const heroTitle = document.querySelector('.hero h1');
+    if (heroTitle && matchMedia('(hover: hover)').matches) {
+      const move = (e) => {
+        const r = heroTitle.getBoundingClientRect();
+        heroTitle.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        heroTitle.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      };
+      heroTitle.addEventListener('mouseenter', (e) => { move(e); heroTitle.classList.add('is-tracking'); });
+      heroTitle.addEventListener('mousemove', move);
+      heroTitle.addEventListener('mouseleave', () => heroTitle.classList.remove('is-tracking'));
+    }
+    const orb = document.querySelector('.orbital');
+    if (orb && matchMedia('(hover: hover)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const layers = [...orb.querySelectorAll('.px')].map(el => ({ el, d: parseFloat(el.dataset.depth) }));
+      const MAX = 16;
+      let tx = 0, ty = 0, cx = 0, cy = 0, raf = null;
+      const tick = () => {
+        cx += (tx - cx) * 0.08; cy += (ty - cy) * 0.08;
+        for (const { el, d } of layers) el.style.transform = `translate(${(cx * d).toFixed(2)}px, ${(cy * d).toFixed(2)}px)`;
+        orb.style.setProperty('--px-x', cx.toFixed(2));
+        orb.style.setProperty('--px-y', cy.toFixed(2));
+        raf = (Math.abs(tx - cx) > 0.05 || Math.abs(ty - cy) > 0.05) ? requestAnimationFrame(tick) : null;
+      };
+      const kick = () => { if (!raf) raf = requestAnimationFrame(tick); };
+      orb.addEventListener('mousemove', (e) => {
+        const r = orb.getBoundingClientRect();
+        tx = ((e.clientX - r.left) / r.width - 0.5) * 2 * MAX;
+        ty = ((e.clientY - r.top) / r.height - 0.5) * 2 * MAX;
+        kick();
+      });
+      orb.addEventListener('mouseleave', () => { tx = 0; ty = 0; kick(); });
+    }
+    const IMG_RATIO = 1489 / 1853;
+    const mapGlass = (group) => {
+      const g = group.getBoundingClientRect();
+      let w = g.width, hgt = g.width / IMG_RATIO;
+      if (hgt < g.height) { hgt = g.height; w = hgt * IMG_RATIO; }
+      const ox = (g.width - w) / 2, oy = (g.height - hgt) * 0.55;
+      group.querySelectorAll('.glass-card').forEach((card) => {
+        const r = card.getBoundingClientRect();
+        card.style.setProperty('--iw', w + 'px');
+        card.style.setProperty('--ih', hgt + 'px');
+        card.style.setProperty('--ix', (ox - (r.left - g.left)) + 'px');
+        card.style.setProperty('--iy', (oy - (r.top - g.top)) + 'px');
+      });
+    };
+    document.querySelectorAll('.concept-grid, .partners').forEach((group) => {
+      mapGlass(group);
+      new ResizeObserver(() => mapGlass(group)).observe(group);
+    });
+    if (matchMedia('(hover: hover)').matches) {
+      document.querySelectorAll('.glass-card').forEach((card) => {
+        card.addEventListener('mousemove', (e) => {
+          const r = card.getBoundingClientRect();
+          card.style.setProperty('--cx', (e.clientX - r.left) + 'px');
+          card.style.setProperty('--cy', (e.clientY - r.top) + 'px');
+        });
+      });
+    }
+    const contactPanel = document.querySelector('.contact-panel');
+    if (contactPanel && matchMedia('(hover: hover)').matches && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      const home = [{ x: 80, y: 20 }, { x: 18, y: 80 }];
+      const blobs = home.map((p, i) => ({ x: p.x, y: p.y, tx: p.x, ty: p.y, tau: i ? 0.95 : 0.7 }));
+      let raf = null, last = 0;
+      const step = (t) => {
+        const dt = Math.min((t - last) / 1000, 0.05); last = t;
+        let moving = false;
+        blobs.forEach((b, i) => {
+          const k = 1 - Math.exp(-dt / b.tau);
+          b.x += (b.tx - b.x) * k; b.y += (b.ty - b.y) * k;
+          if (Math.abs(b.tx - b.x) > 0.02 || Math.abs(b.ty - b.y) > 0.02) moving = true;
+          contactPanel.style.setProperty(`--g${i + 1}x`, b.x.toFixed(2) + '%');
+          contactPanel.style.setProperty(`--g${i + 1}y`, b.y.toFixed(2) + '%');
+        });
+        raf = moving ? requestAnimationFrame(step) : null;
+      };
+      const kick = () => { if (!raf) { last = performance.now(); raf = requestAnimationFrame(step); } };
+      contactPanel.addEventListener('mousemove', (e) => {
+        const r = contactPanel.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width * 100, y = (e.clientY - r.top) / r.height * 100;
+        blobs.forEach((b) => { b.tx = x; b.ty = y; });
+        kick();
+      });
+      contactPanel.addEventListener('mouseleave', () => {
+        blobs.forEach((b, i) => { b.tx = home[i].x; b.ty = home[i].y; });
+        kick();
+      });
+    }
     const items = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       for (const entry of entries) {
