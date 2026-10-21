@@ -224,6 +224,66 @@
     }
     .hero h1.is-tracking .glow-word { background: none; text-shadow: none; }
 
+    .attention-invitation {
+      margin-top: clamp(44px, 5vw, 68px);
+      max-width: 760px;
+      padding-top: clamp(28px, 3vw, 40px);
+      border-top: 1px solid rgba(18,18,18,.12);
+    }
+    .attention-invitation h2 {
+      margin: 0 0 20px;
+      font-size: clamp(32px, 3.7vw, 54px);
+      line-height: 1.04;
+      letter-spacing: -.02em;
+      font-weight: 520;
+    }
+    .attention-invitation p {
+      margin: 0 0 18px;
+      max-width: 68ch;
+      color: #4a4a46;
+      font-size: 16px;
+      line-height: 1.75;
+      letter-spacing: .015em;
+    }
+    .attention-invitation p:first-of-type {
+      color: #8a652b;
+      letter-spacing: .04em;
+    }
+    .attention-invitation a {
+      min-height: 46px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin: 8px 8px 0 0;
+      padding: 0 18px;
+      border-radius: 999px;
+      border: 1px solid rgba(18,18,18,.16);
+      background: #111;
+      color: #fff;
+      font-size: 14px;
+      letter-spacing: .045em;
+      transition: transform .2s ease, background-color .2s ease, color .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+    .attention-invitation a + a {
+      background: rgba(255,255,255,.76);
+      color: #111;
+    }
+    .attention-invitation a:hover {
+      transform: translateY(-2px);
+      background: #eba92a;
+      color: #1a1204;
+      border-color: #eba92a;
+      box-shadow: 0 14px 40px rgba(235,169,42,.24);
+    }
+    .attention-invitation small {
+      display: block;
+      margin-top: 8px;
+      color: #777771;
+      font-size: 12px;
+      line-height: 1.65;
+      letter-spacing: .03em;
+    }
+
     .hero-copy {
       margin-top: 32px;
       max-width: 670px;
@@ -787,6 +847,41 @@
           <div>
             <div class="eyebrow reveal">Adaptive participatory art research</div>
             <h1 class="reveal">What happens when <span class="glow-word">attention</span> becomes material?</h1>
+            <section class="attention-invitation reveal" aria-labelledby="attention-invitation">
+              <h2 id="attention-invitation">How does your attention work?</h2>
+
+              <p><strong>18 January 2027 · Het Wilde Westen, Utrecht</strong></p>
+
+              <p>
+                Through music, we capture your attention — then hand it back to you.
+                In a 10-minute live session, explore listening, choice and the moment
+                you become an active creator. Your responses and recorded signals
+                are transformed into a unique media artwork: an artistic interpretation
+                of your experience, contributing—with your consent—to the future
+                <em>Delay Sessions</em> exhibition.
+              </p>
+
+              <p>
+                <strong>4 hours · 10 minutes per session · Up to 24 sessions.</strong>
+                Places are limited. Drop in during the laboratory to watch,
+                or request a participant place in advance.
+              </p>
+
+              <p>
+                <a href="mailto:slosslena@gmail.com?subject=Participant%20request%20%E2%80%94%2018%20January%202027&amp;body=Hello%20Lena%2C%0A%0AI%20would%20like%20to%20join%20Ecology%20of%20Attention%20as%20a%20participant.%0A%0AName%3A%0ANumber%20of%20people%3A%0APreferred%20language%3A%0A%0APlease%20send%20me%20the%20available%20times%20and%20participation%20details.">
+                  Become a participant
+                </a>
+                <a href="mailto:slosslena@gmail.com?subject=Partner%20request%20%E2%80%94%20Ecology%20of%20Attention&amp;body=Hello%20Lena%2C%0A%0AI%20would%20like%20to%20explore%20a%20partnership%20for%20Ecology%20of%20Attention.%0A%0AName%20and%20organisation%3A%0AProposed%20contribution%3A%0AWhat%20we%20would%20like%20in%20return%3A%0A">
+                  Become a partner
+                </a>
+              </p>
+
+              <p><small>
+                Opening hours, session language and participation details will be
+                confirmed by email. Your place is reserved after confirmation.
+                Recording and exhibition use will be agreed with you beforehand.
+              </small></p>
+            </section>
             <p class="hero-copy reveal">
               Ecology of Attention is a live artistic system in which piano, sensory data and responsive visuals turn subtle shifts of attention into a shared spatial experience.
             </p>
