@@ -333,7 +333,9 @@
     }
 
     .registration-form {
-      margin-top: 28px;
+      scroll-margin-top: 96px;
+      margin-top: 0;
+      margin-bottom: clamp(48px, 6vw, 78px);
       padding: clamp(22px, 3vw, 30px);
       border: 1px solid rgba(18,18,18,.10);
       border-radius: 24px;
@@ -445,6 +447,9 @@
       background: #c96d56;
       box-shadow: 0 14px 40px rgba(201,109,86,.22);
     }
+    .registration-return{display:flex;justify-content:center;margin-top:clamp(34px,5vw,58px)}
+    .registration-return a{min-height:46px;display:inline-flex;align-items:center;justify-content:center;padding:0 19px;border-radius:999px;border:1px solid rgba(217,122,97,.35);background:rgba(217,122,97,.10);color:#a45543;font-size:13px;font-weight:650;letter-spacing:.05em;transition:.2s ease}
+    .registration-return a:hover{transform:translateY(-2px);background:#d97a61;color:#fff;border-color:#d97a61}
     .registration-note {
       margin-top: 12px;
       color: #85857f;
@@ -1033,6 +1038,7 @@
           <a href="#project">Project</a>
           <a href="#team">Team</a>
           <a href="#partners">Partners</a>
+          <a href="#registration-form">Register</a>
           <a class="button primary nav-cta" href="#contact">Contact</a>
         </nav>
       </div>
@@ -1043,37 +1049,7 @@
         <div class="wrap hero-grid">
           <div>
             <div class="eyebrow reveal"><span><span class="welcome-word">WELCOME!</span> to Ecology of Attention · a live laboratory, exhibition and participatory experience</span><span class="eyebrow-wire" aria-hidden="true"></span></div>
-            <h1 class="reveal">What happens when <span class="glow-word">attention</span> becomes material?</h1>
-            <section class="attention-invitation reveal" aria-labelledby="attention-invitation">
-              <h2 id="attention-invitation">Can you take your attention back in 10 minutes?</h2>
-
-              <p><strong>18 January 2027 · Het Wilde Westen, Utrecht</strong></p>
-
-              <p>
-                Through music, we capture your attention — then hand it back to you.
-                In a 10-minute live session, explore listening, choice and the moment
-                you become an active creator. Your responses and recorded signals
-                are transformed into a unique media artwork: an artistic interpretation
-                of your experience, contributing—with your consent—to the future
-                <em>Delay Sessions</em> exhibition.
-              </p>
-
-              <p>
-                <strong>4 hours · 10 minutes per session · Up to 24 sessions.</strong>
-                Places are limited. Drop in during the laboratory to watch,
-                or request a participant place in advance.
-              </p>
-
-              <p>
-                <a href="#registration-form">
-                  Become a participant
-                </a>
-                <a href="mailto:ecology.attention@gmail.com?subject=Partner%20request%20%E2%80%94%20Ecology%20of%20Attention&amp;body=Hello%20Lena%2C%0A%0AI%20would%20like%20to%20explore%20a%20partnership%20for%20Ecology%20of%20Attention.%0A%0AName%20and%20organisation%3A%0AProposed%20contribution%3A%0AWhat%20we%20would%20like%20in%20return%3A%0A">
-                  Become a partner
-                </a>
-              </p>
-
-              <form id="registration-form" class="registration-form" action="https://formsubmit.co/ecology.attention@gmail.com" method="POST">
+            <form id="registration-form" class="registration-form" action="https://formsubmit.co/ecology.attention@gmail.com" method="POST">
                 <input type="hidden" name="_subject" value="New Ecology of Attention registration — 18 January 2027">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_url" value="https://ecologyattention.nl/">
@@ -1126,6 +1102,37 @@
                   </div>
                 </div>
               </form>
+            <h1 class="reveal">What happens when <span class="glow-word">attention</span> becomes material?</h1>
+            <section class="attention-invitation reveal" aria-labelledby="attention-invitation">
+              <h2 id="attention-invitation">Can you take your attention back in 10 minutes?</h2>
+
+              <p><strong>18 January 2027 · Het Wilde Westen, Utrecht</strong></p>
+
+              <p>
+                Through music, we capture your attention — then hand it back to you.
+                In a 10-minute live session, explore listening, choice and the moment
+                you become an active creator. Your responses and recorded signals
+                are transformed into a unique media artwork: an artistic interpretation
+                of your experience, contributing—with your consent—to the future
+                <em>Delay Sessions</em> exhibition.
+              </p>
+
+              <p>
+                <strong>4 hours · 10 minutes per session · Up to 24 sessions.</strong>
+                Places are limited. Drop in during the laboratory to watch,
+                or request a participant place in advance.
+              </p>
+
+              <p>
+                <a href="#registration-form">
+                  Become a participant
+                </a>
+                <a href="mailto:ecology.attention@gmail.com?subject=Partner%20request%20%E2%80%94%20Ecology%20of%20Attention&amp;body=Hello%20Lena%2C%0A%0AI%20would%20like%20to%20explore%20a%20partnership%20for%20Ecology%20of%20Attention.%0A%0AName%20and%20organisation%3A%0AProposed%20contribution%3A%0AWhat%20we%20would%20like%20in%20return%3A%0A">
+                  Become a partner
+                </a>
+              </p>
+
+              
 
               <p><small>
                 Opening hours, session language and participation details will be
@@ -1224,6 +1231,7 @@
             <div class="step"><span class="material-symbols-outlined step-icon" aria-hidden="true">auto_awesome</span><strong>Translation</strong><span>Software converts the session into responsive visual form.</span></div>
             <div class="step"><span class="material-symbols-outlined step-icon" aria-hidden="true">gesture</span><strong>Trace</strong><span>A unique artwork, video or archive element remains.</span></div>
           </div>
+          <div class="registration-return reveal"><a href="#registration-form">Register for 18 January</a></div>
         </div>
       </section>
 
@@ -1282,6 +1290,7 @@
               <div class="partner-meta">Pilot context<br/>Utrecht</div>
             </div>
           </div>
+          <div class="registration-return reveal"><a href="#registration-form">Join the 18 January laboratory</a></div>
         </div>
       </section>
 
