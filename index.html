@@ -332,6 +332,141 @@
       letter-spacing: .03em;
     }
 
+    .registration-form {
+      margin-top: 28px;
+      padding: clamp(22px, 3vw, 30px);
+      border: 1px solid rgba(18,18,18,.10);
+      border-radius: 24px;
+      background: rgba(255,255,255,.78);
+      box-shadow: 0 18px 60px rgba(18,18,18,.04);
+    }
+    .registration-form h3 {
+      margin: 0 0 8px;
+      font-size: clamp(22px, 2.2vw, 30px);
+      line-height: 1.2;
+      letter-spacing: -.015em;
+      font-weight: 520;
+    }
+    .registration-form .form-intro {
+      margin: 0 0 22px;
+      color: #6b6b66;
+      font-size: 14px;
+      line-height: 1.65;
+    }
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .form-field.full { grid-column: 1 / -1; }
+    .form-field label,
+    .form-label {
+      color: #4f4f4a;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .form-field input[type="text"],
+    .form-field input[type="email"] {
+      width: 100%;
+      min-height: 50px;
+      padding: 0 15px;
+      border: 1px solid rgba(18,18,18,.14);
+      border-radius: 14px;
+      background: #fff;
+      color: #161616;
+      font: inherit;
+      font-size: 15px;
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+    .form-field input:focus {
+      border-color: rgba(217,122,97,.75);
+      box-shadow: 0 0 0 4px rgba(217,122,97,.10);
+    }
+    .choice-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 2px;
+    }
+    .choice {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 0 14px;
+      border: 1px solid rgba(18,18,18,.12);
+      border-radius: 999px;
+      background: #fff;
+      color: #3f3f3b;
+      font-size: 14px;
+      cursor: pointer;
+    }
+    .choice input {
+      accent-color: #d97a61;
+    }
+    .availability {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      margin-top: 4px;
+      color: #4f4f4a;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    .availability input {
+      margin-top: 3px;
+      accent-color: #d97a61;
+    }
+    .registration-submit {
+      min-height: 48px;
+      margin-top: 8px;
+      padding: 0 20px;
+      border: 0;
+      border-radius: 999px;
+      background: #d97a61;
+      color: #fff;
+      font: inherit;
+      font-size: 14px;
+      font-weight: 650;
+      letter-spacing: .04em;
+      cursor: pointer;
+      transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+    }
+    .registration-submit:hover {
+      transform: translateY(-2px);
+      background: #c96d56;
+      box-shadow: 0 14px 40px rgba(201,109,86,.22);
+    }
+    .registration-note {
+      margin-top: 12px;
+      color: #85857f;
+      font-size: 11px;
+      line-height: 1.55;
+    }
+    .registration-success {
+      margin-top: 18px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: rgba(217,122,97,.10);
+      color: #8f4e3f;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+    @media (max-width: 620px) {
+      .form-grid { grid-template-columns: 1fr; }
+      .form-field.full { grid-column: auto; }
+      .choice-row { flex-direction: column; align-items: stretch; }
+      .choice { width: 100%; }
+    }
+
     .hero-copy {
       margin-top: 32px;
       max-width: 670px;
@@ -930,13 +1065,67 @@
               </p>
 
               <p>
-                <a href="mailto:ecology.attention@gmail.com?subject=Participant%20request%20%E2%80%94%2018%20January%202027&amp;body=Hello%20Lena%2C%0A%0AI%20would%20like%20to%20join%20Ecology%20of%20Attention%20as%20a%20participant.%0A%0AName%3A%0ANumber%20of%20people%3A%0APreferred%20language%3A%0A%0APlease%20send%20me%20the%20available%20times%20and%20participation%20details.">
+                <a href="#registration-form">
                   Become a participant
                 </a>
                 <a href="mailto:ecology.attention@gmail.com?subject=Partner%20request%20%E2%80%94%20Ecology%20of%20Attention&amp;body=Hello%20Lena%2C%0A%0AI%20would%20like%20to%20explore%20a%20partnership%20for%20Ecology%20of%20Attention.%0A%0AName%20and%20organisation%3A%0AProposed%20contribution%3A%0AWhat%20we%20would%20like%20in%20return%3A%0A">
                   Become a partner
                 </a>
               </p>
+
+              <form id="registration-form" class="registration-form" action="https://formsubmit.co/ecology.attention@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Ecology of Attention registration — 18 January 2027">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_url" value="https://ecologyattention.nl/">
+                <input type="hidden" name="_next" value="https://ecologyattention.nl/?registered=1#registration-form">
+                <input type="hidden" name="_autoresponse" value="Thank you for registering for Ecology of Attention on 18 January 2027. We received your details and will contact you with the practical information and available times.">
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+                <h3>Register for 18 January</h3>
+                <p class="form-intro">Leave your details and choose how you would like to join the laboratory.</p>
+
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label for="registration-name">Name</label>
+                    <input id="registration-name" type="text" name="Name" autocomplete="name" required>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="registration-email">Email</label>
+                    <input id="registration-email" type="email" name="email" autocomplete="email" required>
+                  </div>
+
+                  <div class="form-field full">
+                    <span class="form-label">I would like to join as</span>
+                    <div class="choice-row">
+                      <label class="choice"><input type="radio" name="Role" value="Participant" required> Participant</label>
+                      <label class="choice"><input type="radio" name="Role" value="Spectator" required> Spectator</label>
+                    </div>
+                  </div>
+
+                  <div class="form-field full">
+                    <label class="availability">
+                      <input type="checkbox" name="Available on 18 January 2027" value="Yes" required>
+                      <span>Yes, I’m available on 18 January 2027.</span>
+                    </label>
+                  </div>
+
+                  <div class="form-field full">
+                    <label class="availability">
+                      <input type="checkbox" name="Contact consent" value="Yes" required>
+                      <span>I agree that my registration details may be used to contact me about this event.</span>
+                    </label>
+                  </div>
+
+                  <div class="form-field full">
+                    <button class="registration-submit" type="submit">Register</button>
+                    <div id="registration-success" class="registration-success" hidden>
+                      Thank you — your registration has been sent. We’ll contact you by email with the next details.
+                    </div>
+                    <div class="registration-note">Your registration is confirmed after you receive a reply from Ecology of Attention.</div>
+                  </div>
+                </div>
+              </form>
 
               <p><small>
                 Opening hours, session language and participation details will be
@@ -1206,6 +1395,12 @@
         kick();
       });
     }
+    const registrationParams = new URLSearchParams(window.location.search);
+    if (registrationParams.get('registered') === '1') {
+      const success = document.getElementById('registration-success');
+      if (success) success.hidden = false;
+    }
+
     const items = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries) => {
       for (const entry of entries) {
