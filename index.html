@@ -1072,10 +1072,10 @@
               </p>
 
               <p>
-                <a href="#registration-form">
+                <a href="#registration-form" data-registration-role="Participant">
                   Become a participant
                 </a>
-                <a href="mailto:ecology.attention@gmail.com?subject=Partner%20request%20%E2%80%94%20Ecology%20of%20Attention&amp;body=Hello%20Lena%2C%0A%0AI%20would%20like%20to%20explore%20a%20partnership%20for%20Ecology%20of%20Attention.%0A%0AName%20and%20organisation%3A%0AProposed%20contribution%3A%0AWhat%20we%20would%20like%20in%20return%3A%0A">
+                <a href="#registration-form" data-registration-role="Partner">
                   Become a partner
                 </a>
               </p>
@@ -1180,7 +1180,7 @@
             <div class="step"><span class="material-symbols-outlined step-icon" aria-hidden="true">gesture</span><strong>Trace</strong><span>A unique artwork, video or archive element remains.</span></div>
           </div>
           <form id="registration-form" class="registration-form" action="https://formsubmit.co/ecology.attention@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="New Ecology of Attention registration — 18 January 2027">
+                <input id="registration-subject" type="hidden" name="_subject" value="New Ecology of Attention registration — 18 January 2027">
                 <input type="hidden" name="_template" value="table">
                 <input type="hidden" name="_url" value="https://ecologyattention.nl/">
                 <input type="hidden" name="_next" value="https://ecologyattention.nl/?registered=1#registration-form">
@@ -1206,6 +1206,7 @@
                     <div class="choice-row">
                       <label class="choice"><input type="radio" name="Role" value="Participant" required> Participant</label>
                       <label class="choice"><input type="radio" name="Role" value="Spectator" required> Spectator</label>
+                      <label class="choice"><input type="radio" name="Role" value="Partner" required> Partner</label>
                     </div>
                   </div>
 
@@ -1404,6 +1405,32 @@
         kick();
       });
     }
+    const registrationForm = document.getElementById('registration-form');
+    const registrationSubject = document.getElementById('registration-subject');
+    const roleInputs = [...document.querySelectorAll('input[name="Role"]')];
+
+    const updateRegistrationSubject = () => {
+      if (!registrationSubject) return;
+      const selected = roleInputs.find(input => input.checked);
+      const role = selected ? selected.value.toUpperCase() : 'UNSPECIFIED';
+      registrationSubject.value = `Ecology of Attention — ${role} — 18 January 2027`;
+    };
+
+    roleInputs.forEach(input => input.addEventListener('change', updateRegistrationSubject));
+
+    document.querySelectorAll('[data-registration-role]').forEach(link => {
+      link.addEventListener('click', () => {
+        const role = link.dataset.registrationRole;
+        const input = roleInputs.find(item => item.value === role);
+        if (input) {
+          input.checked = true;
+          updateRegistrationSubject();
+        }
+      });
+    });
+
+    if (registrationForm) registrationForm.addEventListener('submit', updateRegistrationSubject);
+
     const registrationParams = new URLSearchParams(window.location.search);
     if (registrationParams.get('registered') === '1') {
       const success = document.getElementById('registration-success');
