@@ -334,8 +334,8 @@
 
     .registration-form {
       scroll-margin-top: 96px;
-      margin-top: 0;
-      margin-bottom: clamp(48px, 6vw, 78px);
+      margin-top: clamp(52px, 7vw, 90px);
+      margin-bottom: 0;
       padding: clamp(22px, 3vw, 30px);
       border: 1px solid rgba(18,18,18,.10);
       border-radius: 24px;
@@ -1049,59 +1049,7 @@
         <div class="wrap hero-grid">
           <div>
             <div class="eyebrow reveal"><span><span class="welcome-word">WELCOME!</span> to Ecology of Attention · a live laboratory, exhibition and participatory experience</span><span class="eyebrow-wire" aria-hidden="true"></span></div>
-            <form id="registration-form" class="registration-form" action="https://formsubmit.co/ecology.attention@gmail.com" method="POST">
-                <input type="hidden" name="_subject" value="New Ecology of Attention registration — 18 January 2027">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_url" value="https://ecologyattention.nl/">
-                <input type="hidden" name="_next" value="https://ecologyattention.nl/?registered=1#registration-form">
-                <input type="hidden" name="_autoresponse" value="Thank you for registering for Ecology of Attention on 18 January 2027. We received your details and will contact you with the practical information and available times.">
-                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
-
-                <h3>Register for 18 January</h3>
-                <p class="form-intro">Leave your details and choose how you would like to join the laboratory.</p>
-
-                <div class="form-grid">
-                  <div class="form-field">
-                    <label for="registration-name">Name</label>
-                    <input id="registration-name" type="text" name="Name" autocomplete="name" required>
-                  </div>
-
-                  <div class="form-field">
-                    <label for="registration-email">Email</label>
-                    <input id="registration-email" type="email" name="email" autocomplete="email" required>
-                  </div>
-
-                  <div class="form-field full">
-                    <span class="form-label">I would like to join as</span>
-                    <div class="choice-row">
-                      <label class="choice"><input type="radio" name="Role" value="Participant" required> Participant</label>
-                      <label class="choice"><input type="radio" name="Role" value="Spectator" required> Spectator</label>
-                    </div>
-                  </div>
-
-                  <div class="form-field full">
-                    <label class="availability">
-                      <input type="checkbox" name="Available on 18 January 2027" value="Yes" required>
-                      <span>Yes, I’m available on 18 January 2027.</span>
-                    </label>
-                  </div>
-
-                  <div class="form-field full">
-                    <label class="availability">
-                      <input type="checkbox" name="Contact consent" value="Yes" required>
-                      <span>I agree that my registration details may be used to contact me about this event.</span>
-                    </label>
-                  </div>
-
-                  <div class="form-field full">
-                    <button class="registration-submit" type="submit">Register</button>
-                    <div id="registration-success" class="registration-success" hidden>
-                      Thank you — your registration has been sent. We’ll contact you by email with the next details.
-                    </div>
-                    <div class="registration-note">Your registration is confirmed after you receive a reply from Ecology of Attention.</div>
-                  </div>
-                </div>
-              </form>
+            
             <h1 class="reveal">What happens when <span class="glow-word">attention</span> becomes material?</h1>
             <section class="attention-invitation reveal" aria-labelledby="attention-invitation">
               <h2 id="attention-invitation">Can you take your attention back in 10 minutes?</h2>
@@ -1231,7 +1179,59 @@
             <div class="step"><span class="material-symbols-outlined step-icon" aria-hidden="true">auto_awesome</span><strong>Translation</strong><span>Software converts the session into responsive visual form.</span></div>
             <div class="step"><span class="material-symbols-outlined step-icon" aria-hidden="true">gesture</span><strong>Trace</strong><span>A unique artwork, video or archive element remains.</span></div>
           </div>
-          <div class="registration-return reveal"><a href="#registration-form">Register for 18 January</a></div>
+          <form id="registration-form" class="registration-form" action="https://formsubmit.co/ecology.attention@gmail.com" method="POST">
+                <input type="hidden" name="_subject" value="New Ecology of Attention registration — 18 January 2027">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_url" value="https://ecologyattention.nl/">
+                <input type="hidden" name="_next" value="https://ecologyattention.nl/?registered=1#registration-form">
+                <input type="hidden" name="_autoresponse" value="Thank you for registering for Ecology of Attention on 18 January 2027. We received your details and will contact you with the practical information and available times.">
+                <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
+
+                <h3>Register for 18 January</h3>
+                <p class="form-intro">Leave your details and choose how you would like to join the laboratory.</p>
+
+                <div class="form-grid">
+                  <div class="form-field">
+                    <label for="registration-name">Name</label>
+                    <input id="registration-name" type="text" name="Name" autocomplete="name" required>
+                  </div>
+
+                  <div class="form-field">
+                    <label for="registration-email">Email</label>
+                    <input id="registration-email" type="email" name="email" autocomplete="email" required>
+                  </div>
+
+                  <div class="form-field full">
+                    <span class="form-label">I would like to join as</span>
+                    <div class="choice-row">
+                      <label class="choice"><input type="radio" name="Role" value="Participant" required> Participant</label>
+                      <label class="choice"><input type="radio" name="Role" value="Spectator" required> Spectator</label>
+                    </div>
+                  </div>
+
+                  <div class="form-field full">
+                    <label class="availability">
+                      <input type="checkbox" name="Available on 18 January 2027" value="Yes" required>
+                      <span>Yes, I’m available on 18 January 2027.</span>
+                    </label>
+                  </div>
+
+                  <div class="form-field full">
+                    <label class="availability">
+                      <input type="checkbox" name="Contact consent" value="Yes" required>
+                      <span>I agree that my registration details may be used to contact me about this event.</span>
+                    </label>
+                  </div>
+
+                  <div class="form-field full">
+                    <button class="registration-submit" type="submit">Register</button>
+                    <div id="registration-success" class="registration-success" hidden>
+                      Thank you — your registration has been sent. We’ll contact you by email with the next details.
+                    </div>
+                    <div class="registration-note">Your registration is confirmed after you receive a reply from Ecology of Attention.</div>
+                  </div>
+                </div>
+              </form>
         </div>
       </section>
 
