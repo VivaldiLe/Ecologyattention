@@ -332,6 +332,31 @@
       letter-spacing: .03em;
     }
 
+    .role-definitions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin: 28px 0 20px;
+    }
+    .role-definition {
+      padding: 18px;
+      border: 1px solid rgba(18,18,18,.10);
+      border-radius: 18px;
+      background: rgba(255,255,255,.68);
+    }
+    .role-definition strong {
+      display: block;
+      margin-bottom: 8px;
+      color: #9f5544;
+      font-size: 13px;
+      letter-spacing: .04em;
+    }
+    .role-definition span {
+      display: block;
+      color: #5d5d57;
+      font-size: 13px;
+      line-height: 1.6;
+    }
     .registration-form {
       scroll-margin-top: 96px;
       margin-top: clamp(52px, 7vw, 90px);
@@ -470,6 +495,7 @@
       .form-field.full { grid-column: auto; }
       .choice-row { flex-direction: column; align-items: stretch; }
       .choice { width: 100%; }
+      .role-definitions { grid-template-columns: 1fr; }
     }
 
     .hero-copy {
@@ -1050,15 +1076,15 @@
           <div>
             <div class="eyebrow reveal"><span><span class="welcome-word">WELCOME!</span> to Ecology of Attention · a live laboratory, exhibition and participatory experience</span><span class="eyebrow-wire" aria-hidden="true"></span></div>
             
-            <h1 class="reveal">What happens when <span class="glow-word">attention</span> becomes material?</h1>
+            <h1 class="reveal">What happens when <span class="glow-word">attention</span> becomes material through live piano?</h1>
             <section class="attention-invitation reveal" aria-labelledby="attention-invitation">
               <h2 id="attention-invitation">Can you take your attention back in 10 minutes?</h2>
 
               <p><strong>18 January 2027 · Het Wilde Westen, Utrecht</strong></p>
 
               <p>
-                Through music, we capture your attention — then hand it back to you.
-                In a 10-minute live session, explore listening, choice and the moment
+                Through live piano, we capture your attention — then hand it back to you.
+                In an individual live session, explore listening, choice and the moment
                 you become an active creator. Your responses and recorded signals
                 are transformed into a unique media artwork: an artistic interpretation
                 of your experience, contributing—with your consent—to the future
@@ -1066,10 +1092,25 @@
               </p>
 
               <p>
-                <strong>4 hours · 10 minutes per session · Up to 24 sessions.</strong>
-                Places are limited. Drop in during the laboratory to watch,
-                or request a participant place in advance.
+                <strong>8-hour laboratory · 15 active participant places · Free audience entry.</strong>
+                Come as an audience visitor and watch the work unfold, or reserve
+                an active session and become a co-creator of the exhibition.
               </p>
+
+              <div class="role-definitions">
+                <article class="role-definition">
+                  <strong>Audience visitor</strong>
+                  <span>Come to the laboratory, take a seat in the audience and experience the work live. Entry is free; no active session is required.</span>
+                </article>
+                <article class="role-definition">
+                  <strong>Participant / co-creator</strong>
+                  <span>Take part in an individual session. Your attention, choices and recorded signals become artistic material and may contribute, with your consent, to the developing exhibition.</span>
+                </article>
+                <article class="role-definition">
+                  <strong>Partner</strong>
+                  <span>Support the project through technical expertise, production, research, venue access, communication, financial support or another in-kind contribution.</span>
+                </article>
+              </div>
 
               <p>
                 <a href="#registration-form" data-registration-role="Participant">
@@ -1144,7 +1185,7 @@
               <div class="kicker reveal" style="margin-bottom:22px">01 · Project</div>
               <h2 class="reveal">A personalised cycle between body, sound, data and image.</h2>
               <p class="lead reveal">
-                Ecology of Attention explores how minimal changes in rhythm, focus and sensory input can alter a participant’s perception of a live artistic situation. The project combines live piano performance with compact biosensing, real-time software and responsive visualisation. Rather than measuring attention as a score, the system treats attention as a changing relation: between a person, a sound, a space and the surrounding audience.
+                Ecology of Attention explores how minimal changes in rhythm, focus and sensory input can alter a participant’s perception of a live artistic situation. The project combines live piano performance with compact biosensing, real-time software and responsive visualisation. Rather than measuring attention as a score, the system treats attention as a changing relation: between a person, a sound, a space and the surrounding audience. The Utrecht laboratory on 18 January 2027 is followed by a 10-day research and exhibition phase at NDSM FUSE, Amsterdam-Noord, planned for May 2027.
               </p>
             </div>
           </div>
@@ -1188,7 +1229,7 @@
                 <input type="text" name="_honey" style="display:none" tabindex="-1" autocomplete="off">
 
                 <h3>Register for 18 January</h3>
-                <p class="form-intro">Leave your details and choose how you would like to join the laboratory.</p>
+                <p class="form-intro">Choose how you would like to join: as an audience visitor, an active participant / co-creator, or a project partner.</p>
 
                 <div class="form-grid">
                   <div class="form-field">
@@ -1204,8 +1245,8 @@
                   <div class="form-field full">
                     <span class="form-label">I would like to join as</span>
                     <div class="choice-row">
-                      <label class="choice"><input type="radio" name="Role" value="Participant" required> Participant</label>
-                      <label class="choice"><input type="radio" name="Role" value="Spectator" required> Spectator</label>
+                      <label class="choice"><input type="radio" name="Role" value="Participant" required> Participant / co-creator</label>
+                      <label class="choice"><input type="radio" name="Role" value="Audience visitor" required> Audience visitor</label>
                       <label class="choice"><input type="radio" name="Role" value="Partner" required> Partner</label>
                     </div>
                   </div>
